@@ -1,0 +1,13 @@
+@startuml GameLogic
+state "GameLogic State" as MinimalLogicTesting_GameLogic_State {
+  state "Initial" as MinimalLogicTesting_GameLogic_State_Initial
+  state "Playing" as MinimalLogicTesting_GameLogic_State_Playing
+}
+
+MinimalLogicTesting_GameLogic_State_Initial --> MinimalLogicTesting_GameLogic_State_Playing : Go
+MinimalLogicTesting_GameLogic_State_Playing --> MinimalLogicTesting_GameLogic_State_Playing : Go
+
+MinimalLogicTesting_GameLogic_State_Initial : OnGo → Started
+
+[*] --> MinimalLogicTesting_GameLogic_State_Initial
+@enduml
