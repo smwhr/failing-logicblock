@@ -1,6 +1,7 @@
 # Minimal Failing Test
 
-This a minimal reproducing godot project failing in a way that is mysterious to me.
+~~This a minimal reproducing godot project failing in a way that is mysterious to me.~~
+This is now working as intended!
 
 ## Dependencies
 

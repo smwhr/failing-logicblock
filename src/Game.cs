@@ -8,19 +8,16 @@ using Godot;
 
 
 
-public interface IGame : INode3D {
-  public IGameLogic GameLogic { get; }
-}
-
-
 [Meta(typeof(IAutoNode))]
-public partial class Game : Node3D, IProvide<IGameLogic> {
+public partial class Game : Node3D, INode3D, IProvide<IGameLogic> {
   public override void _Notification(int what) => this.Notify(what);
+  // IGameLogic IProvide<IGameLogic>.Value() => GameLogic;
 
   public IGameLogic GameLogic { get; set; } = default!;
   public GameLogic.IBinding GameBinding { get; set; } = default!;
 
-  public IGameLogic Value => new GameLogic();
+  // public IGameLogic Value => new GameLogic(); // WRONG
+  public IGameLogic Value => GameLogic; //GOOD
 
 
   public void Setup() {
@@ -40,9 +37,9 @@ public partial class Game : Node3D, IProvide<IGameLogic> {
         doSomething();
       });
 
-    GameLogic.Start();
 
     this.Provide();
+    GameLogic.Start();
 
   }
 
